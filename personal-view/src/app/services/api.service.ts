@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { map, Observable, switchMap, tap } from 'rxjs';
@@ -8,7 +8,7 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 })
 
 export class ApiService {
-  private readonly API = environment.url.api; 
+  private readonly API = environment.url.api;
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
@@ -19,8 +19,36 @@ export class ApiService {
     return this.http.get<any>(`${this.API}/User/poor/${id}`)
   }
 
-  getTransactionsFromUser(id: string): Observable<any> {
-    return this.http.get<any>(`${this.API}/Transaction/fromUser/${id}`)
+  getTransactionsFromUser(id: string, year: number | null | undefined, month: number | null | undefined): Observable<any> {
+    let url = `${this.API}/Transaction/fromUser/${id}`;
+
+    const params: { [key: string]: string | number } = {};
+    if (year) {
+      params['year'] = year;
+    }
+    if (month) {
+      params['month'] = month;
+    }
+
+    const httpParams = new HttpParams({ fromObject: params });
+
+    return this.http.get<any>(url, { params: httpParams });
   }
-  
+
+  getMonthInfo(id: string, year: number | null | undefined, month: number | null | undefined): Observable<any> {
+    let url = `${this.API}/Transaction/fromUser/${id}/monthInfo`;
+
+    const params: { [key: string]: string | number } = {};
+    if (year) {
+      params['year'] = year;
+    }
+    if (month) {
+      params['month'] = month;
+    }
+
+    const httpParams = new HttpParams({ fromObject: params });
+
+    return this.http.get<any>(url, { params: httpParams });
+  }
+
 }

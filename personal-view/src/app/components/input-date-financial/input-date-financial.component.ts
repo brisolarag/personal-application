@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -14,64 +14,68 @@ import {MatIconModule} from '@angular/material/icon';
 
 })
 export class InputDateFinancialComponent {
+  notSelected = -1;
   private readonly _today = new Date();
+  @Output() filterChange = new EventEmitter<{ month: number | null | undefined; year: number | null | undefined }>();
 
-
-
+  
   years = [2022, 2023, 2024];
   readonly monthsString = [
     "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December"
   ];
-
+  
   monthControl = new FormControl(this._today.getMonth());
   yearControl = new FormControl(this._today.getFullYear());
+
   filter = new FormGroup({
     month: this.monthControl,
     year: this.yearControl 
   });
 
+  ngOnInit() {
+    this.filterChange.emit({ month: this.filter.value.month, year: this.filter.value.year });
+  }
   
-
-
+  constructor() {
+    this.filter.valueChanges.subscribe((value) => {
+      this.filterChange.emit({ month: value.month, year: value.year });
+    });
+  }
+  
   nextMonth() {
-    let month = this.monthControl.value ?? this._today.getMonth();
-    let year = this.yearControl.value ?? this._today.getFullYear();
-    console.log(this.filter.value)
+    let month = this.monthControl.value == -1 ? this._today.getMonth() : this.monthControl.value;
+    let year = this.yearControl.value == -1 ? this._today.getFullYear() : this.yearControl.value;
 
-    if (month == 11) {
-      const nextYear = year + 1;
-      if (!this.years.includes(nextYear)) {this.years.push(nextYear)}
-      month = 0;
-      year++;
+    if (month === 11) {
+      this.updateMonthAndYear(0, year! + 1);
     } else {
-      month++;
+      this.updateMonthAndYear(month! + 1, year!);
     }
-    this.monthControl.setValue(month);
-    this.yearControl.setValue(year);
   }
 
   previousMonth() {
-    let month = this.monthControl.value ?? this._today.getMonth();
-    let year = this.yearControl.value ?? this._today.getFullYear();
+    let month = this.monthControl.value == -1 ? this._today.getMonth() : this.monthControl.value;
+    let year = this.yearControl.value == -1 ? this._today.getFullYear() : this.yearControl.value;
 
     if (month == 0) {
-      const previousYear = year - 1;
-      if (!this.years.includes(previousYear)) {this.years.push(previousYear)}
-      month = 11;
-      year--;
+      this.updateMonthAndYear(11, year! - 1);
     } else {
-      month --;
+      this.updateMonthAndYear(month! - 1, year!);
     }
-    this.monthControl.setValue(month);
-    this.yearControl.setValue(year);
   }
 
-  resetFilter() {
-    this.monthControl.setValue(this._today.getMonth());
-    this.yearControl.setValue(this._today.getFullYear());
-  }
+  resetFilter = () => this.updateMonthAndYear(this._today.getMonth(), this._today.getFullYear());
 
+  private updateMonthAndYear(month: number, year: number) {
+
+    if (!this.years.includes(year)) {
+      this.years.push(year);
+    }
+    this.monthControl.setValue(month, { emitEvent: false });
+    this.yearControl.setValue(year, { emitEvent: false });
+    this.filter.updateValueAndValidity({ emitEvent: true });
+  }
 
 }
 

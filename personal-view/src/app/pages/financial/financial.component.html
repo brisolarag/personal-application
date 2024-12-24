@@ -1,5 +1,5 @@
 <div class="wrapper" id="financial-page">
-    <div class="filter-financial"><input-date-financial></input-date-financial></div>
+    <div class="filter-financial"><input-date-financial (filterChange)="onFilterChange($event)"></input-date-financial></div>
 
     <div class="resume-box">
         <div class="box informations">
@@ -12,7 +12,7 @@
                 <div class="value">R$ 1233.12</div>
             </div>
             <div class="info-item">
-                <div class="label">Nubank</div>
+                <div class="label" (click)="teste()">Nubank</div>
                 <div class="value">R$ 1233.12</div>
             </div>
             <div class="info-item">
@@ -30,7 +30,7 @@
             <mat-progress-spinner class="custom-spinner green-spinner" [color]="colorSpinner" [strokeWidth]="15" [diameter]="160" [mode]="'determinate'" [value]="paidPercentage">
             </mat-progress-spinner>
             
-            <span class="labels"><span style="color: #5ed39a;">PAID </span>  <span style="color: #f44336;">LEFT</span></span>
+            <span class="labels"><span style="color: #5ed39a;">{{paidPercentage}}% </span> | <span style="color: #f44336;">{{leftPercentage}}%</span></span>
         </div>
 
         <div class="box outs">
@@ -45,5 +45,5 @@
         </div>
     </div>
 
-    <div class="table"><table-finanicial></table-finanicial></div>
+    <div class="table"><table-finanicial [filter]="filter"></table-finanicial></div>
 </div> 

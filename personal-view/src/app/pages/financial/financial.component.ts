@@ -17,18 +17,27 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './financial.component.scss'
 })
 export class FinancialComponent {
-  private _paidPercentage:number = 30;
   colorSpinner:string = 'accent'
   user:any = {};
+  filter: { month: number | null | undefined; year: number | null | undefined } = { month: null, year: null };
 
-  constructor ( private api: ApiService ) {}
-  ngOnInit() {
+  constructor(private api: ApiService, private login: LoginService) {}
 
+  paidPercentage:number = 30;
+  get leftPercentage() {return 100 - this.paidPercentage}
+
+  onFilterChange(filter: { month: number | null | undefined; year: number | null | undefined }) {
+    const month = filter.month == -1 ? null : filter.month! + 1;
+    const year = filter.year == -1 ? null : filter.year!;
+    this.filter = filter;
+    this.api.getMonthInfo(this.login.getUserId()!, year, month).subscribe(response => {
+      this.paidPercentage = response.data.percentage;
+    }
+    );
   }
 
-
-  set paidPercentage(newPercentage: number) {this._paidPercentage = newPercentage}
-  get paidPercentage() {return this._paidPercentage;}
-  get leftPercentage() {return 100 - this._paidPercentage}
+  teste() {
+    console.log(this.paidPercentage);
+  }
 
 }

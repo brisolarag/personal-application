@@ -24,12 +24,26 @@ public class TransactionController(ITransactionRepository repository) : Controll
     }
 
     [HttpGet("fromUser/{userId:guid}")]
-    public async Task<ActionResult> GetTransactions(Guid userId, string? refDate)
+    public async Task<ActionResult<TransactionDto>> GetTransactions(Guid userId, int? year, int? month)
     {
         try
         {
-            var transactions = await _repository.GetTransactionFromUser(userId, refDate);
+            var transactions = await _repository.GetTransactionFromUser(userId, year, month);
             return Ok(new { err = false, data = transactions, count = transactions.Count });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { err = true, msg = ex.Message });
+        }
+    }
+
+    [HttpGet("fromUser/{userId:guid}/monthInfo")]
+    public async Task<ActionResult> GetPaidPercentage(Guid userId, int? year, int? month)
+    {
+        try
+        {
+            var percentage = await _repository.GetPaidPercentage(userId, year, month);
+            return Ok(new { err = false, data = percentage });
         }
         catch (Exception ex)
         {

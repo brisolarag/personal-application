@@ -2,13 +2,19 @@
   <form class="group-selects" [formGroup]="filter">
     <mat-form-field appearance="outline" class="custom-form">
       <mat-label>Month</mat-label>
-      <mat-select [formControl]="monthControl" name="month"> @for (month of monthsString; track $index) { <mat-option [value]="$index">{{month}}</mat-option> } </mat-select>
+      <mat-select [formControl]="monthControl" name="month">
+        <mat-option [value]="notSelected">All</mat-option>
+        @for (month of monthsString; track $index) { <mat-option [value]="$index">{{month}}</mat-option> } 
+      </mat-select>
     </mat-form-field>
 
 
     <mat-form-field appearance="outline" class="custom-form">
       <mat-label>Year</mat-label>
-      <mat-select [formControl]="yearControl" name="year"> @for (year of years; track $index) { <mat-option [value]="year">{{year}}</mat-option> } </mat-select>
+      <mat-select [formControl]="yearControl" name="year">
+        <mat-option [value]="notSelected">All</mat-option>
+        @for (year of years; track $index) { <mat-option [value]="year">{{year}}</mat-option> } 
+      </mat-select>
     </mat-form-field>
 
 
