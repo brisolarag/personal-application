@@ -1,0 +1,143 @@
+
+#financial-page {
+    --size-resume: calc(240px - var(--size-filter-financial));
+    display: grid;
+    grid-template-rows: var(--size-filter-financial) var(--size-resume) 1fr;
+    box-sizing: border-box;
+    
+}
+.resume-box {
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // border-top: 1px solid;
+    // border-bottom: 1px solid;
+    // border-color: rgb(184, 184, 184);
+    // background-color: rgb(240, 240, 240);
+    padding: 10px;
+    gap: 10px;
+
+    .box {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .informations {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        gap: 7px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .paidPercentage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+}
+
+
+.info-item {
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(235, 235, 235);
+    height: 35px;
+    display: grid;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    grid-template-columns: 1fr 1fr;
+    * {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .label {
+        justify-content: start;
+    }
+    .value {
+        justify-content: end;
+        text-align: right;
+    }
+}
+
+.info-item:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+
+.outs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+    .labels {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 100;
+    }
+      
+}
+
+.label {
+    font-size: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.label-result {
+    font-weight: 400;
+}
+
+
+
+
+.custom-spinner {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+}
+
+.red-spinner {
+left: 50%;
+transform: translateX(-50%) translateY(-50%);
+}
+
+.green-spinner {
+right: 50%;
+transform: translateX(50%) translateY(-50%) rotateY(180deg);
+}
+
+.labels {
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.table {
+    width: 100%;
+    height: 100%;
+}
+
+
+.filter-financial {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}

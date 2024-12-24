@@ -1,0 +1,69 @@
+#work-point-page {
+    --size: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.controller-fields {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    width: var(--size);
+    color: var(--select-color);
+}
+
+.work-point-container {
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--select-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+mat-grid-tile {
+    background: lightblue;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    input, input:focus {
+        box-sizing: border-box;
+        background-color: inherit;
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        text-align: center;
+        z-index: inherit;
+        font-size: 25px;
+    }
+    position: relative;
+}
+
+.label {
+    padding-left: 10px;
+    padding-top: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: smaller;
+}
+
+.grey {
+    background-color: rgb(248, 248, 248);
+}

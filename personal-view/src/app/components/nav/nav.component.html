@@ -1,0 +1,18 @@
+<div id="navigation-bar">
+    <div class="logo-and-items">
+        <div class="logo full-center">🤯</div>
+
+        <div class="items">
+            <span [class.nav-selected]="urlMatch(urls.college)" (click)="go(urls.college)"><a>College</a></span>
+            <span [class.nav-selected]="urlMatch(urls.work)" (click)="go(urls.work)"><a>Work</a></span>
+            <span [class.nav-selected]="urlMatch(urls.financial)" (click)="go(urls.financial)"><a>Financial</a></span>
+            <span [class.nav-selected]="urlMatch(urls.healthy)" (click)="go(urls.healthy)"><a>Healthy</a></span>
+            <span [class.nav-selected]="urlMatch(urls.workPointCalculator)" (click)="go(urls.workPointCalculator)"><a>WorkPoint-Calculator</a></span>
+
+        </div>
+    </div>
+
+    <div class="profile">
+        LoggedIn as {{user.fullName}}
+    </div>
+</div>

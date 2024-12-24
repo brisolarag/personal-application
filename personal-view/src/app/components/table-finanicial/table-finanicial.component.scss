@@ -1,0 +1,55 @@
+
+.mat-column-number,
+.mat-column-state {
+  width: 64px;
+}
+
+.mat-column-created {
+  width: 124px;
+}
+
+.table-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.custom-table {
+  --mat-table-header-headline-color: black;
+  --mat-table-row-item-label-text-color: #000
+}
+
+
+.mat-mdc-table {
+  height: 20px;
+  table-layout: auto;
+  white-space: normal;
+  background-color: white;
+}
+
+.mdc-icon-button {
+  color: black;
+}
+
+
+.mat-column-reference, .mat-column-date, .mat-column-datePaid, .mat-column-card {
+  width: 5% !important;
+}
+
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.mat-mdc-row:hover .mat-mdc-cell {
+  text-decoration: underline;
+}
+
+
+
+.green-text {
+  color: #5ed39a;
+}

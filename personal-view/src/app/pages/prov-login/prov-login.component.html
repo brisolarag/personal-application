@@ -1,0 +1,12 @@
+<div class="wrapper" id="prov-login-page">
+  <div class="login-box">
+    <mat-form-field appearance="outline" class="custom-form">
+      <mat-label>Select the user</mat-label>
+      <mat-select (selectionChange)="onUserSelect($event)">
+        @for (user of users; track $index) {
+        <mat-option value="{{ user.id }}">{{ user.fullName }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

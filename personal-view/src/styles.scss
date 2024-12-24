@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+html {
+    --size-filter-financial: 40px;
+    --size-resume-financial: calc(240px - var(var(--size-filter-financial)));
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.full-center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html, body { height: 100%;}
+
+
+
+html {
+    --select-color: #373a404f;
+    --select-hover-color: #373a408f;
+    --select-focused-color: #373a40ad;
+
+    --option-color: #373a407c;
+    --option-selected-color: #000000;
+
+    --mat-table-row-item-container-height: 20px;
+    --mat-paginator-container-text-color: black;
+    
+    --mat-paginator-enabled-icon-color: rgba(0, 0, 0, 0.54);
+    --mat-paginator-disabled-icon-color: rgba(0, 0, 0, 0.357);
+    --mat-paginator-container-background-color: #ffffff;
+
+
+    // --mat-select-panel-background-color: #424242;
+    // --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38);
+    
+    
+    
+    
+    
+    --mat-select-focused-arrow-color: var(--select-focused-color);
+    --mdc-outlined-text-field-focus-outline-color: var(--select-focused-color);
+    --mdc-outlined-text-field-focus-label-text-color: var(--select-focused-color);
+    
+    
+    --mat-select-placeholder-text-color: var(--select-color);
+    --mat-select-enabled-arrow-color: var(--select-color);
+    --mdc-outlined-text-field-outline-color: var(--select-color);
+    --mdc-outlined-text-field-label-text-color: var(--select-color);
+    --mat-select-enabled-trigger-text-color: var(--select-color);
+
+    --mdc-outlined-text-field-hover-label-text-color: var(--select-hover-color);
+    --mdc-outlined-text-field-hover-outline-color: var(--select-hover-color);
+    
+    --mat-select-panel-background-color: #EEEDEB;
+    
+    
+    --mat-option-selected-state-label-text-color: var(--option-selected-color);
+    --mat-option-label-text-color: var(--option-color)
+
+
+    --mat-datepicker-toggle-active-state-icon-color: var(--select-color);
+    --mat-datepicker-calendar-container-background-color: var(--select-color);
+    // --mdc-filled-text-field-container-color: blue;
+
+
+
+    --mat-datepicker-calendar-date-selected-state-background-color: #838383;
+    // --mat-datepicker-calendar-date-today-selected-state-outline-color
+
+    --mat-datepicker-toggle-icon-color: var(--select-color);
+    --mat-datepicker-toggle-active-state-icon-color: var(--select-focused-color);
+
+
+    --mat-datepicker-calendar-date-hover-state-background-color: var(--select-color)
+}
+
+.mat-primary {
+    --mat-minimal-pseudo-checkbox-selected-checkmark-color: var(--option-selected-color) !important;
+  }
+

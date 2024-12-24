@@ -1,0 +1,22 @@
+<div class="wrapper-input">
+  <form class="group-selects" [formGroup]="filter">
+    <mat-form-field appearance="outline" class="custom-form">
+      <mat-label>Month</mat-label>
+      <mat-select [formControl]="monthControl" name="month"> @for (month of monthsString; track $index) { <mat-option [value]="$index">{{month}}</mat-option> } </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="custom-form">
+      <mat-label>Year</mat-label>
+      <mat-select [formControl]="yearControl" name="year"> @for (year of years; track $index) { <mat-option [value]="year">{{year}}</mat-option> } </mat-select>
+    </mat-form-field>
+
+
+  </form>
+
+  <div class="buttons">
+    <button (click)="previousMonth()"><mat-icon>arrow_back</mat-icon></button>
+    <button (click)="resetFilter()"><mat-icon>restart_alt</mat-icon></button>
+    <button (click)="nextMonth()"><mat-icon>arrow_forward</mat-icon></button>
+  </div>
+</div>

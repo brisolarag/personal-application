@@ -1,0 +1,39 @@
+<div class="wrapper" id="login-page">
+
+    <div class="login-box">
+        <form class="group-selects">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Ex. pat@example.com">
+                <!-- @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                  <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email is <strong>required</strong></mat-error>
+                } -->
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+
+              <button mat-flat-button>Login</button>
+        </form>
+
+    </div>
+
+    <p>Already have an account? <a href="{{registerUrl}}">Register.</a></p>
+
+</div>

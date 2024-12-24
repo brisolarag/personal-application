@@ -1,0 +1,49 @@
+<div class="wrapper" id="financial-page">
+    <div class="filter-financial"><input-date-financial></input-date-financial></div>
+
+    <div class="resume-box">
+        <div class="box informations">
+            <div class="info-item">
+                <div class="label">Itau Azul</div>
+                <div class="value">R$ 1233.12</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Itau Click</div>
+                <div class="value">R$ 1233.12</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Nubank</div>
+                <div class="value">R$ 1233.12</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Others</div>
+                <div class="value">R$ 1233.12</div>
+            </div>
+        </div>
+
+
+
+        <div class="box paidPercentage">
+            <mat-progress-spinner class="custom-spinner red-spinner" [color]="'warn'" [strokeWidth]="15" [diameter]="160" [mode]="'determinate'" [value]="leftPercentage">
+            </mat-progress-spinner>
+
+            <mat-progress-spinner class="custom-spinner green-spinner" [color]="colorSpinner" [strokeWidth]="15" [diameter]="160" [mode]="'determinate'" [value]="paidPercentage">
+            </mat-progress-spinner>
+            
+            <span class="labels"><span style="color: #5ed39a;">PAID </span>  <span style="color: #f44336;">LEFT</span></span>
+        </div>
+
+        <div class="box outs">
+
+            <div class="labels">
+                <span class="label"><span>Expenses</span><span>R$ 900.25</span></span>
+                <span class="label"><span>Received</span><span>R$ 900.25</span></span>
+            </div>
+
+            <span class="label label-result"><span>Free</span><span>R$ 900.25</span></span>
+
+        </div>
+    </div>
+
+    <div class="table"><table-finanicial></table-finanicial></div>
+</div> 

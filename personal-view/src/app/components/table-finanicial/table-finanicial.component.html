@@ -1,0 +1,55 @@
+<div class="table-content">
+  <div class="table-diets">
+      <table class="custom-table" mat-table [dataSource]="dataSource">
+        
+        <!-- Reference Column -->
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef (click)="teste()"> Ref. </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.reference  | date:'MMM,yyyy'}} </td>
+        </ng-container>
+        
+        <!-- DueDate Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.date | date:'dd/MM/yyyy' }} </td>
+        </ng-container>
+        
+        <!-- DatePaid Column -->
+        <ng-container matColumnDef="datePaid">
+          <th mat-header-cell *matHeaderCellDef> DatePaid </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.datePaid | date:'dd/MM/yyyy' }}</td>
+        </ng-container>
+        
+        <!-- source Column -->
+        <ng-container matColumnDef="source">
+          <th mat-header-cell *matHeaderCellDef> Source </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.source }}</td>
+        </ng-container>
+        
+        <!-- Card Column -->
+        <ng-container matColumnDef="card">
+          <th mat-header-cell *matHeaderCellDef> Card </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.card }}</td>
+        </ng-container>
+
+        <!-- Desc Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Desc. </th>
+          <td mat-cell *matCellDef="let financial"> {{ financial.description }}</td>
+        </ng-container>
+        
+        
+        <!-- Value Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef> Value </th>
+          <td mat-cell *matCellDef="let financial">R$ {{ financial.value }}</td>
+        </ng-container>
+  
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'green-text': row.datePaid}"></tr>
+      </table>
+  </div>
+  <mat-paginator class="table-paginator" [pageSizeOptions]="[11]" showFirstLastButtons></mat-paginator>
+
+</div>

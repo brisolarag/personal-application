@@ -1,0 +1,64 @@
+<div class="wrapper" id="register-page">
+  <div class="login-box">
+    <form class="group-selects">
+      <mat-form-field appearance="outline" class="custom-form">
+        <mat-label>Full Name</mat-label>
+        <input matInput class="custom-input" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Birth Date (MM/DD/YYYY)</mat-label>
+        <input matInput [matDatepicker]="picker" class="custom-input" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Ex. pat@example.com" />
+        <!-- @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                  <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email is <strong>required</strong></mat-error>
+                } -->
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Repeat your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-flat-button>Register</button>
+    </form>
+  </div>
+
+  <p>Already have an account? <a href="{{loginUrl}}">Login.</a></p>
+</div>
