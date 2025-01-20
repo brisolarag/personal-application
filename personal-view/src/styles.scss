@@ -89,6 +89,12 @@ html {
 
 
     --mat-datepicker-calendar-date-hover-state-background-color: var(--select-color)
+
+    // --mdc-dialog-container-color: blue !important;
+    --mdc-dialog-container-color: #fff !important;
+
+
+    --mdc-checkbox-unselected-icon-color: var(--select-color)
 }
 
 .mat-primary {

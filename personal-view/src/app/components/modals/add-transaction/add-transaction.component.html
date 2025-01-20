@@ -1,0 +1,70 @@
+<h2 mat-dialog-title [style.color]="colorTitle">Insert Transaction</h2>
+<mat-dialog-content style="width: 400px; height: 500px;padding: 10px;">
+
+
+
+    <form class="group-form">
+        <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+          <mat-label>Type</mat-label>
+          <mat-select [formControl]="transactionTypeControl" name="type">
+            <mat-option [value]="0">IN</mat-option>
+            <mat-option [value]="1">OUT</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" [formControl]="transactionAmout"/>
+            <span matTextPrefix style="color:#373a404f">R$&nbsp;</span>
+        </mat-form-field>
+    
+        <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+            <mat-label>Date (MM/DD/YYYY)</mat-label>
+            <input matInput [matDatepicker]="picker" class="custom-input" [formControl]="transactionDate"/>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        @if (transactionTypeControl.value === 1) {
+            <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+                <mat-label>DatePaid (MM/DD/YYYY)</mat-label>
+                <input matInput [matDatepicker]="picker" class="custom-input" [formControl]="transactionDatePaid"/>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <p class="label-checkbox">Not paid?<mat-checkbox [formControl]="notPaidCheckbox"></mat-checkbox></p>
+
+        }
+
+
+
+        <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+            <mat-label>Source</mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" [formControl]="transactionSource"/>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+            <mat-label>Description</mat-label>
+            <input matInput class="example-right-align" placeholder="0" [formControl]="transactionDescription"/>
+        </mat-form-field>
+
+        @if (transactionTypeControl.value === 1 && transactionDescription.value?.toLowerCase()?.includes('invoice')) {
+            <mat-form-field floatLabel="always" appearance="outline" class="custom-form">
+                <mat-label>Card</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0" [formControl]="transactionCard"/>
+            </mat-form-field>
+        }
+
+    
+      </form>
+
+
+
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancelClick()" style="background-color: red;">Cancel</button>
+    <button mat-button cdkFocusInitial style="background-color: green;">Add</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, Renderer2, ViewChild } from '@angular/core';
 import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
@@ -8,6 +8,8 @@ import { TableFinanicialComponent } from "../../components/table-finanicial/tabl
 import { InputDateFinancialComponent } from "../../components/input-date-financial/input-date-financial.component";
 import { LoginService } from '../../services/login.service';
 import { ApiService } from '../../services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTransactionComponent } from '../../components/modals/add-transaction/add-transaction.component';
 
 @Component({
   selector: 'app-financial',
@@ -22,6 +24,7 @@ export class FinancialComponent {
   filter: { month: number | null | undefined; year: number | null | undefined } = { month: null, year: null };
 
   constructor(private api: ApiService, private login: LoginService) {}
+  readonly dialog = inject(MatDialog);
 
   paidPercentage:number = 30;
   get leftPercentage() {return 100 - this.paidPercentage}
@@ -36,8 +39,27 @@ export class FinancialComponent {
     );
   }
 
-  teste() {
-    console.log(this.paidPercentage);
+  executeFunction() {
+    this.openDialogAddTransaction();
+    console.log('Shift + I was pressed!');
+    // Sua lógica aqui
+  }
+
+  // Detectar eventos de teclado
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.shiftKey && event.key === 'I') {
+      this.executeFunction();
+      event.preventDefault(); // Evita comportamento padrão, se necessário
+    }
+  }
+
+
+  openDialogAddTransaction() {
+    const dialogAddTransaction = this.dialog.open(AddTransactionComponent);
+    dialogAddTransaction.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
